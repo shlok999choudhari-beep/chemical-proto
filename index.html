@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AloePure Bodywash | Chemical Proto Project</title>
+  <meta name="description" content="A student-formulated chemical prototype bodywash project by Kashish, Harshali, Shlok, Sarthak & Sakshi. Explore chemical reactions, experimental procedure, interactive diagrams, and AI quiz." />
+  <meta name="author" content="Kashish, Harshali, Shlok, Sarthak, Sakshi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor Glow -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Scroll Progress Top Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Lightbox Modal -->
+  <div id="img-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo preview">✕</button>
+      <img id="lightbox-img" src="" alt="Lab preview" />
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <div class="logo-mark">⚗️</div>
+      <div class="logo-text">
+        <span class="logo-name">AloePure</span>
+        <span class="logo-sub">Chemical Proto</span>
+      </div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#chemicals" class="nav-link">Chemicals</a></li>
+      <li><a href="#reactions" class="nav-link">Reactions</a></li>
+      <li><a href="#procedure" class="nav-link">Procedure</a></li>
+      <li><a href="#diagrams" class="nav-link">Diagrams</a></li>
+      <li><a href="#video" class="nav-link">Video</a></li>
+      <li><a href="#applications" class="nav-link">Applications</a></li>
+      <li><a href="#quiz" class="nav-link">AI Quiz</a></li>
+      <li><a href="#team" class="nav-link">Team</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#procedure" class="nav-cta-btn">View Lab Process</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="home" class="hero">
+    <div class="hero-mesh"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Floating Molecular Badges -->
+    <div class="floating-mol mol-1">H₂O</div>
+    <div class="floating-mol mol-2">C₇H₆O₃</div>
+    <div class="floating-mol mol-3">SLS Matrix</div>
+    <div class="floating-mol mol-4">pH 5.0 ★</div>
+
+    <div class="hero-container container">
+      <div class="hero-content reveal-up">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>MIT Chemical Proto Project · 2026</span>
+        </div>
+        <h1 class="hero-title">
+          Engineering The Perfect<br />
+          <span class="gradient-text typed-text" id="typed-text"></span><br />
+          <span class="hero-sub-title">From Raw Chemicals to Skin-Safe Formula</span>
+        </h1>
+        <p class="hero-desc">
+          An end-to-end undergraduate chemical engineering project synthesizing a balanced, soothing bodywash formulated with <strong>Aloe Vera, Salicylic Acid, SLS</strong> and calibrated at optimal skin pH 5.0.
+        </p>
+
+        <!-- Team Pills -->
+        <div class="team-pills">
+          <span class="pill">✦ Kashish</span>
+          <span class="pill">✦ Harshali</span>
+          <span class="pill">✦ Shlok</span>
+          <span class="pill">✦ Sarthak</span>
+          <span class="pill">✦ Sakshi</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#procedure" class="btn-primary">
+            <span>Explore Lab Procedure</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#diagrams" class="btn-ghost">
+            <span>Process Flowchart</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-right">
+        <div class="hero-img-container" onclick="openLightbox('images/team.jpg', 'AloePure Formulator Team: Kashish, Harshali, Shlok, Sarthak & Sakshi in the Chemistry Laboratory')">
+          <div class="hero-img-glow"></div>
+          <!-- Real Team Photo (1024x768 Landscape) -->
+          <img src="images/team.jpg" alt="AloePure Formulator Team: Kashish, Harshali, Shlok, Sarthak & Sakshi in the Chemistry Laboratory" class="hero-team-img" />
+          <div class="hero-img-overlay-bar">
+            <span class="hero-team-label">👥 Our Research Team in Chemistry Lab</span>
+            <span class="zoom-badge">🔍 Enlarge</span>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-chip">
+              <div class="stat-num">7</div>
+              <div class="stat-label">Chemicals</div>
+            </div>
+            <div class="stat-chip">
+              <div class="stat-num">5</div>
+              <div class="stat-label">Lab Steps</div>
+            </div>
+            <div class="stat-chip">
+              <div class="stat-num">5.0</div>
+              <div class="stat-label">Target pH</div>
+            </div>
+            <div class="stat-chip">
+              <div class="stat-num">5</div>
+              <div class="stat-label">Chemists</div>
+            </div>
+          </div>
+          <div class="float-badge fb1">⚗️ Laboratory Formulated</div>
+          <div class="float-badge fb2">🌿 100% Aloe Vera Active</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="mouse-icon"><div class="mouse-dot"></div></div>
+      <span>Scroll to explore process</span>
+    </div>
+  </section>
+
+  <!-- ===== CHEMICALS USED ===== -->
+  <section id="chemicals" class="section chemicals-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Formulation Matrix</div>
+        <h2 class="section-title reveal-up">Seven Essential Chemicals</h2>
+        <p class="section-sub reveal-up">Each ingredient was measured and blended to achieve optimal cleansing, humectant hydration, and dermal safety.</p>
+      </div>
+
+      <div class="chemicals-grid">
+        <!-- 1. Distilled Water -->
+        <div class="chem-card reveal-up" style="--i:0">
+          <div class="chem-glow" style="--c:#3B82F6"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#3B82F6"><span>💧</span></div>
+            <span class="chem-role-badge">Base / Solvent</span>
+          </div>
+          <h3>Distilled Water</h3>
+          <p class="chem-formula">H₂O</p>
+          <p class="chem-desc">The universal solvent forming 65% of the formulation base. Demineralized to prevent electrolyte interference with anionic surfactants.</p>
+          <div class="chem-tags"><span>Aqueous Phase</span><span>Demineralized</span><span>pH 7.0 Neutral</span></div>
+        </div>
+
+        <!-- 2. Ethylene Glycol -->
+        <div class="chem-card reveal-up" style="--i:1">
+          <div class="chem-glow" style="--c:#8B5CF6"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#8B5CF6"><span>🔬</span></div>
+            <span class="chem-role-badge">Cosolvent / Humectant</span>
+          </div>
+          <h3>Ethylene Glycol</h3>
+          <p class="chem-formula">C₂H₆O₂</p>
+          <p class="chem-desc">A diol carrier that dissolves lipophilic actives like salicylic acid, prevents freeze crystallization, and maintains formulation viscosity.</p>
+          <div class="chem-tags"><span>Cosolvent</span><span>Solubilizer</span><span>Viscosity Modifier</span></div>
+        </div>
+
+        <!-- 3. Glycerine -->
+        <div class="chem-card reveal-up" style="--i:2">
+          <div class="chem-glow" style="--c:#10B981"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#10B981"><span>🌱</span></div>
+            <span class="chem-role-badge">Natural Humectant</span>
+          </div>
+          <h3>Glycerine</h3>
+          <p class="chem-formula">C₃H₈O₃</p>
+          <p class="chem-desc">A trihydroxy alcohol providing intense hygroscopic hydration by drawing atmospheric moisture directly into the stratum corneum.</p>
+          <div class="chem-tags"><span>Hygroscopic</span><span>Skin Barrier</span><span>NMF Support</span></div>
+        </div>
+
+        <!-- 4. Citric Acid (Eno) -->
+        <div class="chem-card reveal-up" style="--i:3">
+          <div class="chem-glow" style="--c:#F59E0B"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#F59E0B"><span>🍋</span></div>
+            <span class="chem-role-badge">pH Buffer</span>
+          </div>
+          <h3>Citric Acid (Eno)</h3>
+          <p class="chem-formula">C₆H₈O₇</p>
+          <p class="chem-desc">Tri-carboxylic organic acid used to titrate and buffer the alkaline surfactant mixture down to the skin's healthy acid mantle (4.8–5.2).</p>
+          <div class="chem-tags"><span>Acid Mantle</span><span>Buffering Agent</span><span>Chelator</span></div>
+        </div>
+
+        <!-- 5. SLS -->
+        <div class="chem-card reveal-up" style="--i:4">
+          <div class="chem-glow" style="--c:#06B6D4"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#06B6D4"><span>🫧</span></div>
+            <span class="chem-role-badge">Primary Surfactant</span>
+          </div>
+          <h3>SLS (Sodium Lauryl Sulfate)</h3>
+          <p class="chem-formula">C₁₂H₂₅NaO₄S</p>
+          <p class="chem-desc">Anionic detergent with a polar hydrophilic head and nonpolar 12-carbon lipid tail. Lowers surface tension and generates rich micro-foam.</p>
+          <div class="chem-tags"><span>Micelle Builder</span><span>Foaming Agent</span><span>Emulsifier</span></div>
+        </div>
+
+        <!-- 6. Salicylic Acid -->
+        <div class="chem-card reveal-up" style="--i:5">
+          <div class="chem-glow" style="--c:#EC4899"></div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#EC4899"><span>✨</span></div>
+            <span class="chem-role-badge">BHA Exfoliant</span>
+          </div>
+          <h3>Salicylic Acid</h3>
+          <p class="chem-formula">C₇H₆O₃</p>
+          <p class="chem-desc">Beta-hydroxy acid that penetrates sebum-filled pores to dissolve desmosomes, clear keratin debris, and prevent acne breakouts.</p>
+          <div class="chem-tags"><span>Lipid-Soluble</span><span>Keratolytic</span><span>Anti-Acne</span></div>
+        </div>
+
+        <!-- 7. Aloe Vera Gel (Star Ingredient) -->
+        <div class="chem-card chem-card--star reveal-up" style="--i:6">
+          <div class="chem-glow" style="--c:#10B981"></div>
+          <div class="star-badge">⭐ Star Botanical Active</div>
+          <div class="chem-top">
+            <div class="chem-icon-wrap" style="--c:#10B981"><span>🌿</span></div>
+            <span class="chem-role-badge" style="--c:#10B981">Skin Soother &amp; Antioxidant</span>
+          </div>
+          <h3>Aloe Vera Pure Gel</h3>
+          <p class="chem-formula">Acemannan Mucopolysaccharides</p>
+          <p class="chem-desc">Rich in bioactive acemannan, glucomannans, and zinc. Calms surfactant irritation, accelerates epidermal renewal, and leaves a silky post-rinse texture.</p>
+          <div class="chem-tags"><span>Anti-Inflammatory</span><span>Wound Healing</span><span>Natural Bio-Gel</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHEMICAL REACTIONS & LAB GALLERY ===== -->
+  <section id="reactions" class="section reactions-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Underlying Chemistry</div>
+        <h2 class="section-title reveal-up">Reactions &amp; Surfactant Kinetics</h2>
+        <p class="section-sub reveal-up">How surfactants, acids, and humectants behave on a molecular level during washing.</p>
+      </div>
+
+      <div class="reactions-layout">
+        <div class="reaction-cards">
+          <!-- Reaction 1 -->
+          <div class="reaction-card reveal-left" style="--i:0">
+            <div class="rxn-num">01</div>
+            <div class="rxn-body">
+              <h3>Critical Micelle Concentration (CMC) &amp; Dirt Trapping</h3>
+              <div class="rxn-eq">
+                <span class="rxn-mol">SLS Monomers (&gt;CMC)</span>
+                <span class="rxn-op">+ Sebum/Dirt &#8594;</span>
+                <span class="rxn-prod">Spherical Micelle Complex</span>
+              </div>
+              <p>Above the CMC, SLS molecules self-assemble into spheres. Non-polar tails point inwards to encapsulate insoluble grease, while ionic heads interact with water to rinse it away.</p>
+              
+              <!-- Interactive Micelle Simulator -->
+              <div class="micelle-interactive-box">
+                <div class="micelle-anim" id="micelle-anim">
+                  <div class="micelle-center" id="micelle-dirt">Sebum / Oil</div>
+                  <div class="sls-m s1">⊕</div><div class="sls-m s2">⊕</div>
+                  <div class="sls-m s3">⊕</div><div class="sls-m s4">⊕</div>
+                  <div class="sls-m s5">⊕</div><div class="sls-m s6">⊕</div>
+                  <div class="sls-m s7">⊕</div><div class="sls-m s8">⊕</div>
+                </div>
+                <button class="btn-micro" onclick="pulseMicelle()">⚡ Simulate Micelle Trapping</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reaction 2 -->
+          <div class="reaction-card reveal-left" style="--i:1">
+            <div class="rxn-num">02</div>
+            <div class="rxn-body">
+              <h3>Citric Acid Tri-Protoc Equilibrium &amp; Buffering</h3>
+              <div class="rxn-eq">
+                <span class="rxn-mol">C₆H₈O₇ + H₂O</span>
+                <span class="rxn-op">&#8652;</span>
+                <span class="rxn-prod">C₆H₇O₇⁻ + H₃O⁺ (pKa₁ = 3.13)</span>
+              </div>
+              <p>Citric acid buffers against alkalinity. By donating hydronium ions, it counters the high pH of raw surfactants, preserving the skin's acidic lipid bilayer against opportunistic bacteria.</p>
+            </div>
+          </div>
+
+          <!-- Reaction 3 -->
+          <div class="reaction-card reveal-left" style="--i:2">
+            <div class="rxn-num">03</div>
+            <div class="rxn-body">
+              <h3>BHA Keratolytic Exfoliation Mechanism</h3>
+              <div class="rxn-eq">
+                <span class="rxn-mol">Salicylic Acid (Lipophilic)</span>
+                <span class="rxn-op">+ Keratin Bridges &#8594;</span>
+                <span class="rxn-prod">Desmosome Cleavage</span>
+              </div>
+              <p>Because salicylic acid is oil-soluble, it dissolves past surface sebum and hydrolyzes intracellular adhesive desmosomes between stratum corneum squames.</p>
+            </div>
+          </div>
+
+          <!-- Reaction 4 -->
+          <div class="reaction-card reveal-left" style="--i:3">
+            <div class="rxn-num">04</div>
+            <div class="rxn-body">
+              <h3>Glycerine Hydrogen Bonding Matrix</h3>
+              <div class="rxn-eq">
+                <span class="rxn-mol">Glycerol (3 -OH Groups)</span>
+                <span class="rxn-op">+ 3 H₂O &#8594;</span>
+                <span class="rxn-prod">Hydrated Polyol Complex</span>
+              </div>
+              <p>The three hydroxyl groups in glycerol form coordinate hydrogen bonds with water clusters, slowing trans-epidermal water loss (TEWL) post cleanse.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Lab Photos Grid (Interactive Lightbox) -->
+        <div class="rxn-gallery reveal-right">
+          <div class="gallery-header">
+            <h4>📸 Lab Documentation Photos</h4>
+            <small>Click any photo for high-resolution view</small>
+          </div>
+          <div class="rxn-img-grid">
+            <!-- SLS Step Photo -->
+            <div class="rxn-img-item rxn-img-tall" onclick="openLightbox('images/step_sls.jpg', 'Surfactant Addition: Weighing and dissolving SLS in the chemistry laboratory')">
+              <img src="images/step_sls.jpg" alt="Student adding SLS surfactant in chemistry lab" />
+              <div class="rxn-img-overlay">
+                <span class="rxn-img-tag">Step 03</span>
+                <span class="rxn-img-label">Adding SLS Surfactant</span>
+              </div>
+            </div>
+
+            <!-- Measuring Photo -->
+            <div class="rxn-img-item" onclick="openLightbox('images/step_measure.jpg', 'Measurement Phase: Calibrated syringe measurement of ethylene glycol and liquid reagents')">
+              <img src="images/step_measure.jpg" alt="Students measuring chemicals with syringe" />
+              <div class="rxn-img-overlay">
+                <span class="rxn-img-tag">Step 01</span>
+                <span class="rxn-img-label">Syringe Measurement</span>
+              </div>
+            </div>
+
+            <!-- Filtering Photo -->
+            <div class="rxn-img-item" onclick="openLightbox('images/step_filter.jpg', 'Filtration & Dissolution: Filtering salicylic acid and blending active components')">
+              <img src="images/step_filter.jpg" alt="Students filtering mixture through laboratory funnel" />
+              <div class="rxn-img-overlay">
+                <span class="rxn-img-tag">Step 02</span>
+                <span class="rxn-img-label">Filtration &amp; Blending</span>
+              </div>
+            </div>
+
+            <!-- Final Product Photo -->
+            <div class="rxn-img-item rxn-img-wide" onclick="openLightbox('images/product.jpg', 'Final AloePure Formulation: Golden, transparent, skin-safe bodywash at pH 5.0')">
+              <img src="images/product.jpg" alt="Final synthesized bodywash in laboratory beaker" />
+              <div class="rxn-img-overlay">
+                <span class="rxn-img-tag">Final ✓</span>
+                <span class="rxn-img-label">Finished Bodywash Batch (pH 5.0)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE pH SIMULATOR -->
+      <div class="interactive-ph-sim reveal-up">
+        <div class="ph-sim-header">
+          <div class="ph-sim-badge">Interactive Lab Simulator</div>
+          <h3>Skin Barrier Acid Mantle &amp; pH Equilibrium Tester</h3>
+          <p>Drag the slider to observe how chemical titration impacts liquid color, pH strip response, and cutaneous safety.</p>
+        </div>
+        <div class="ph-sim-body">
+          <div class="ph-sim-left">
+            <div class="beaker-container">
+              <div class="beaker" id="sim-beaker">
+                <div class="beaker-liquid" id="beaker-liquid"></div>
+                <div class="beaker-bubbles">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="beaker-markings">
+                  <span>250ml</span><span>200ml</span><span>150ml</span><span>100ml</span><span>50ml</span>
+                </div>
+              </div>
+              <div class="test-strip-box">
+                <div class="test-strip">
+                  <div class="test-strip-pad" id="test-strip-pad"></div>
+                  <span class="test-strip-label">pH Strip</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ph-sim-right">
+            <div class="ph-meter-card">
+              <div class="ph-meter-top">
+                <span class="meter-title">Digital pH Reading</span>
+                <span class="ph-safety-pill" id="ph-safety-pill">Target Optimal</span>
+              </div>
+              <div class="ph-huge-num" id="ph-display-val">5.0</div>
+              <div class="ph-desc-text" id="ph-desc-text">
+                Ideal natural skin range (4.8 - 5.2). Guards the skin microbiome while washing away dirt and bacteria.
+              </div>
+            </div>
+
+            <div class="ph-slider-box">
+              <label for="ph-slider">Adjust Citric Acid Titration:</label>
+              <input type="range" id="ph-slider" min="1.0" max="14.0" step="0.1" value="5.0" oninput="updatePhSimulator(this.value)" />
+              <div class="ph-scale-legend">
+                <span>1.0 (Acid)</span>
+                <span class="target-marker">★ 5.0 AloePure</span>
+                <span>7.0 (Water)</span>
+                <span>10.0 (Soap)</span>
+                <span>14.0 (Alkali)</span>
+              </div>
+            </div>
+
+            <div class="ph-preset-buttons">
+              <button class="ph-preset" onclick="setPh(2.5)">Citric Acid Excess (2.5)</button>
+              <button class="ph-preset active-preset" onclick="setPh(5.0)">AloePure Target (5.0)</button>
+              <button class="ph-preset" onclick="setPh(7.0)">Neutral Water (7.0)</button>
+              <button class="ph-preset" onclick="setPh(9.5)">Harsh Alkaline Soap (9.5)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIMENTAL PROCEDURE ===== -->
+  <section id="procedure" class="section procedure-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Step-by-Step Walkthrough</div>
+        <h2 class="section-title reveal-up">Experimental Procedure</h2>
+        <p class="section-sub reveal-up">Follow the complete lab methodology our team conducted to formulate, blend, and test the bodywash.</p>
+      </div>
+
+      <!-- Interactive Stepper Controller Bar -->
+      <div class="proc-stepper-bar reveal-up">
+        <button class="proc-step-btn active" id="psb-1" onclick="scrollToStep(1)">
+          <span class="psb-num">01</span>
+          <span class="psb-text">Measurement</span>
+        </button>
+        <div class="psb-line"></div>
+        <button class="proc-step-btn" id="psb-2" onclick="scrollToStep(2)">
+          <span class="psb-num">02</span>
+          <span class="psb-text">Salicylic Dissolution</span>
+        </button>
+        <div class="psb-line"></div>
+        <button class="proc-step-btn" id="psb-3" onclick="scrollToStep(3)">
+          <span class="psb-num">03</span>
+          <span class="psb-text">Surfactant Addition</span>
+        </button>
+        <div class="psb-line"></div>
+        <button class="proc-step-btn" id="psb-4" onclick="scrollToStep(4)">
+          <span class="psb-num">04</span>
+          <span class="psb-text">Homogenization</span>
+        </button>
+        <div class="psb-line"></div>
+        <button class="proc-step-btn" id="psb-5" onclick="scrollToStep(5)">
+          <span class="psb-num">05</span>
+          <span class="psb-text">pH Balancing</span>
+        </button>
+      </div>
+
+      <!-- Procedure Vertical Timeline Track -->
+      <div class="proc-track">
+        <!-- Dynamic Gradient Liquid Line -->
+        <div class="proc-line" id="proc-line"></div>
+
+        <!-- Step 1 -->
+        <div class="proc-step reveal-up" id="step-card-1" style="--i:0">
+          <div class="proc-dot"><span>01</span></div>
+          <div class="proc-card">
+            <div class="proc-img" onclick="openLightbox('images/step_measure.jpg', 'Step 1: Preparation & Precision Measurement using calibrated laboratory instruments')">
+              <img src="images/step_measure.jpg" alt="Students measuring chemicals with calibrated syringe" />
+              <div class="proc-img-overlay">Step 01 · Click to Enlarge</div>
+            </div>
+            <div class="proc-info">
+              <div class="proc-badge-tag">Phase 1: Weighing</div>
+              <h3>Precision Weighing &amp; Reagent Calibration</h3>
+              <p>Distilled water (250 mL) was measured into a sterile 500 mL borosilicate beaker as the liquid foundation. Using medical-grade graduated syringes, precise quantities of ethylene glycol and glycerine were dispensed to ensure exact molar ratios.</p>
+              <div class="proc-params">
+                <div class="param-item"><strong>Base Volume:</strong> 250 mL H₂O</div>
+                <div class="param-item"><strong>Tolerance:</strong> ±0.05 mL</div>
+                <div class="param-item"><strong>Glassware:</strong> 500 mL Beaker</div>
+              </div>
+              <div class="proc-tags">
+                <span>Analytical Balance</span><span>Graduated Syringe</span><span>Distilled Water</span><span>Glycerine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="proc-step reveal-up" id="step-card-2" style="--i:1">
+          <div class="proc-dot"><span>02</span></div>
+          <div class="proc-card">
+            <div class="proc-img" onclick="openLightbox('images/step_filter.jpg', 'Step 2: Dissolving Salicylic Acid in Ethylene Glycol and Gravity Filtration')">
+              <img src="images/step_filter.jpg" alt="Students filtering solution through funnel in laboratory" />
+              <div class="proc-img-overlay">Step 02 · Click to Enlarge</div>
+            </div>
+            <div class="proc-info">
+              <div class="proc-badge-tag">Phase 2: Active Preparation</div>
+              <h3>Salicylic Acid Solubilization &amp; Filtration</h3>
+              <p>Salicylic acid crystals are hydrophobic and insoluble in cold water alone. The acid was pre-dissolved in ethylene glycol at 40°C with continuous magnetic stirring. The resultant golden solution was filtered through Whatman filter paper to eliminate any undissolved particulates.</p>
+              <div class="proc-params">
+                <div class="param-item"><strong>Temperature:</strong> 40°C Mild Heat</div>
+                <div class="param-item"><strong>Solvent:</strong> Ethylene Glycol</div>
+                <div class="param-item"><strong>Clarity:</strong> 100% Optical Translucency</div>
+              </div>
+              <div class="proc-tags">
+                <span>Salicylic Acid</span><span>Ethylene Glycol</span><span>Filter Funnel</span><span>Whatman Paper</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="proc-step reveal-up" id="step-card-3" style="--i:2">
+          <div class="proc-dot"><span>03</span></div>
+          <div class="proc-card">
+            <div class="proc-img" onclick="openLightbox('images/step_sls.jpg', 'Step 3: Slow Addition and Dissolution of Sodium Lauryl Sulfate Surfactant')">
+              <img src="images/step_sls.jpg" alt="Student adding SLS powder into distilled water beaker" />
+              <div class="proc-img-overlay">Step 03 · Click to Enlarge</div>
+            </div>
+            <div class="proc-info">
+              <div class="proc-badge-tag">Phase 3: Surfactant Matrix</div>
+              <h3>Surfactant Addition (SLS Incorporation)</h3>
+              <p>Sodium Lauryl Sulfate powder was introduced incrementally into the water phase under low-shear mixing (120 RPM). Rapid agitation was avoided to prevent excessive aeration and entrapment of air bubbles, yielding a stable uniform micellar dispersion.</p>
+              <div class="proc-params">
+                <div class="param-item"><strong>Stirring Speed:</strong> 120 RPM (Low Shear)</div>
+                <div class="param-item"><strong>Concentration:</strong> ~15% w/v</div>
+                <div class="param-item"><strong>Foam Control:</strong> Laminar Flow</div>
+              </div>
+              <div class="proc-tags">
+                <span>SLS Surfactant</span><span>Low-Shear Stirring</span><span>Micelle Assembly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Interactive Homogenization Simulator -->
+        <div class="proc-step reveal-up" id="step-card-4" style="--i:3">
+          <div class="proc-dot"><span>04</span></div>
+          <div class="proc-card">
+            <!-- Dedicated Dynamic Mixing Interactive Visual -->
+            <div class="proc-img proc-img-mixer">
+              <div class="lab-mixer-simulator" id="lab-mixer">
+                <div class="mixer-vortex" id="mixer-vortex"></div>
+                <div class="mixer-droplet d1"></div>
+                <div class="mixer-droplet d2"></div>
+                <div class="mixer-droplet d3"></div>
+                <div class="mixer-droplet d4"></div>
+                <div class="mixer-rod"></div>
+                <div class="mixer-rpm-badge" id="mixer-rpm">180 RPM</div>
+              </div>
+              <button class="btn-mixer-toggle" onclick="toggleMixerSpeed()">⚡ Boost Mixing Speed</button>
+            </div>
+            <div class="proc-info">
+              <div class="proc-badge-tag">Phase 4: Homogenization</div>
+              <h3>Sequential Emulsification &amp; Aloe Vera Infusion</h3>
+              <p>The pre-dissolved active phase (salicylic acid + glycol) was blended into the surfactant base, followed by glycerine and pure aloe vera gel. Mixing was sustained for 15 minutes until complete rheological stability and silky consistency were achieved.</p>
+              <div class="proc-params">
+                <div class="param-item"><strong>Duration:</strong> 15 Minutes</div>
+                <div class="param-item"><strong>Order:</strong> Base &#8594; Active &#8594; Humectant &#8594; Aloe</div>
+                <div class="param-item"><strong>Texture:</strong> Smooth Viscous Gel</div>
+              </div>
+              <div class="proc-tags">
+                <span>Aloe Vera Gel</span><span>Homogenizer</span><span>Rheology Balance</span><span>Glycerine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="proc-step reveal-up" id="step-card-5" style="--i:4">
+          <div class="proc-dot"><span>05</span></div>
+          <div class="proc-card">
+            <div class="proc-img" onclick="openLightbox('images/product.jpg', 'Step 5: Citric Acid Titration and Final Finished AloePure Bodywash')">
+              <img src="images/product.jpg" alt="Final formulated AloePure bodywash in glass beaker" />
+              <div class="proc-img-overlay">Step 05 · Click to Enlarge</div>
+            </div>
+            <div class="proc-info">
+              <div class="proc-badge-tag">Phase 5: Quality Control</div>
+              <h3>pH Titration with Citric Acid &amp; Final Formulation</h3>
+              <p>Citric acid solution was titrated dropwise into the formulation while testing with calibrated pH strips. Upon achieving equilibrium at pH 5.0 (natural skin mantle), the bodywash was decanted for clarity, foam stability testing, and storage in pump containers.</p>
+              <div class="proc-params">
+                <div class="param-item"><strong>Equilibrium pH:</strong> 5.0 (Passed ✓)</div>
+                <div class="param-item"><strong>Appearance:</strong> Clear Golden Viscous Gel</div>
+                <div class="param-item"><strong>Foam Height:</strong> 18.5 cm (Stable)</div>
+              </div>
+              <div class="proc-tags">
+                <span>Citric Acid</span><span>pH Strips</span><span>Finished Product</span><span>Quality Clearance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS DIAGRAMS ===== -->
+  <section id="diagrams" class="section diagrams-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Engineering Flowsheets</div>
+        <h2 class="section-title reveal-up">Process Flow &amp; Block Diagrams</h2>
+        <p class="section-sub reveal-up">Visual engineering schematics mapping every stage from raw feedstocks to quality controlled product.</p>
+      </div>
+
+      <div class="diag-tabs reveal-up">
+        <button class="diag-tab active" id="tab-flow" onclick="showDiagram('flow')">
+          <span>⟡</span> Process Flow Diagram (PFD)
+        </button>
+        <button class="diag-tab" id="tab-block" onclick="showDiagram('block')">
+          <span>▦</span> Chemical Block Diagram
+        </button>
+      </div>
+
+      <!-- Process Flow Diagram -->
+      <div class="diag-panel reveal-up" id="panel-flow">
+        <div class="flow-header-tip">💡 Click on any node to view real laboratory operating specifications</div>
+
+        <div class="interactive-pfd">
+          <!-- Stage 1 -->
+          <div class="pfd-node" onclick="inspectNode('raw')">
+            <div class="pfd-badge">01</div>
+            <div class="pfd-icon">📦</div>
+            <strong>Raw Feedstocks</strong>
+            <small>7 Laboratory Reagents</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="pfd-node" onclick="inspectNode('weigh')">
+            <div class="pfd-badge">02</div>
+            <div class="pfd-icon">⚖️</div>
+            <strong>Analytical Weighing</strong>
+            <small>Electronic balance ±0.01g</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Fork: Water & Oil Phase -->
+          <div class="pfd-fork-wrap">
+            <div class="pfd-branch">
+              <div class="pfd-node pfd-node-sm" onclick="inspectNode('water')">
+                <div class="pfd-badge">03A</div>
+                <div class="pfd-icon">💧</div>
+                <strong>Aqueous Phase</strong>
+                <small>H₂O + SLS + Glycerine</small>
+                <span class="pfd-hint">Inspect Specs</span>
+              </div>
+              <div class="pfd-stream-sm"><span class="stream-arrow">↓</span></div>
+              <div class="pfd-node pfd-node-sm" onclick="inspectNode('mix')">
+                <div class="pfd-badge">03B</div>
+                <div class="pfd-icon">🌀</div>
+                <strong>Low-Shear Blending</strong>
+                <small>120 RPM / Ambient Temp</small>
+                <span class="pfd-hint">Inspect Specs</span>
+              </div>
+            </div>
+
+            <div class="fork-merge-tag">
+              <div class="merge-circle">⇄</div>
+              <span>COMBINE &amp; HOMOGENIZE</span>
+            </div>
+
+            <div class="pfd-branch">
+              <div class="pfd-node pfd-node-sm" onclick="inspectNode('oil')">
+                <div class="pfd-badge">04A</div>
+                <div class="pfd-icon">🔬</div>
+                <strong>Lipid Active Phase</strong>
+                <small>Salicylic Acid + Glycol</small>
+                <span class="pfd-hint">Inspect Specs</span>
+              </div>
+              <div class="pfd-stream-sm"><span class="stream-arrow">↓</span></div>
+              <div class="pfd-node pfd-node-sm" onclick="inspectNode('heat')">
+                <div class="pfd-badge">04B</div>
+                <div class="pfd-icon">🌡️</div>
+                <strong>Thermal Dissolution</strong>
+                <small>40°C Water Bath</small>
+                <span class="pfd-hint">Inspect Specs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Stage 5: Aloe Addition -->
+          <div class="pfd-node" onclick="inspectNode('aloe')">
+            <div class="pfd-badge">05</div>
+            <div class="pfd-icon">🌿</div>
+            <strong>Aloe Vera Botanical Infusion</strong>
+            <small>Cold-fold preservation</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Stage 6: pH Adjustment -->
+          <div class="pfd-node" onclick="inspectNode('ph')">
+            <div class="pfd-badge">06</div>
+            <div class="pfd-icon">🍋</div>
+            <strong>Citric Acid Titration</strong>
+            <small>Target Range: 4.8 – 5.2 pH</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Stage 7: Quality Control -->
+          <div class="pfd-node" onclick="inspectNode('qc')">
+            <div class="pfd-badge">07</div>
+            <div class="pfd-icon">🧫</div>
+            <strong>Quality &amp; Foam Assurance</strong>
+            <small>Viscosity · Foam Volume · Microbiome Safe</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+
+          <div class="pfd-stream">
+            <div class="stream-line"></div>
+            <div class="stream-pulse"></div>
+            <span class="stream-arrow">▼</span>
+          </div>
+
+          <!-- Stage 8: Output -->
+          <div class="pfd-node pfd-node-final" onclick="inspectNode('out')">
+            <div class="pfd-badge">END</div>
+            <div class="pfd-icon">🧴</div>
+            <strong>AloePure Finished Bodywash</strong>
+            <small>Packaged in Dispensers (pH 5.0 Verified ✓)</small>
+            <span class="pfd-hint">Inspect Specs</span>
+          </div>
+        </div>
+
+        <!-- Node Inspector Modal / Drawer -->
+        <div id="node-inspector" class="node-inspector" style="display:none;">
+          <div class="ni-header">
+            <h4 id="ni-title">Stage Details</h4>
+            <button class="ni-close" onclick="closeInspector()">✕</button>
+          </div>
+          <div class="ni-body" id="ni-body"></div>
+        </div>
+      </div>
+
+      <!-- Chemical Block Diagram -->
+      <div class="diag-panel hidden reveal-up" id="panel-block">
+        <div class="team-block-diag-wrap">
+          <!-- View Switcher -->
+          <div class="bd-view-toggle">
+            <button class="bvt-btn active" id="bvt-interactive" onclick="switchBlockView('interactive')">
+              <span>⚡</span> Interactive Chemical Flowsheet
+            </button>
+            <button class="bvt-btn" id="bvt-original" onclick="switchBlockView('original')">
+              <span>📄</span> View Original Team Schematic
+            </button>
+          </div>
+
+          <!-- INTERACTIVE SVG DIAGRAM -->
+          <div id="bd-interactive-view" class="bd-view-panel">
+            <div class="svg-container">
+              <svg viewBox="0 0 920 540" class="flow-svg" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Glow Filters -->
+                  <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  
+                  <!-- Arrow Markers -->
+                  <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8" />
+                  </marker>
+                  <marker id="arrow-violet" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6" />
+                  </marker>
+                  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#34d399" />
+                  </marker>
+                  <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f59e0b" />
+                  </marker>
+                  <marker id="arrow-pink" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ec4899" />
+                  </marker>
+                </defs>
+
+                <!-- BASE STATIC STREAM LINES (Background) -->
+                <g class="stream-base-lines">
+                  <!-- Distilled Water to Mixing 1 -->
+                  <path d="M 160,43 L 315,43 L 315,75" fill="none" stroke="rgba(56, 189, 248, 0.2)" stroke-width="2.5" />
+                  <!-- Ethylene Glycol to Mixing 1 -->
+                  <path d="M 160,107 L 260,107" fill="none" stroke="rgba(139, 92, 246, 0.2)" stroke-width="2.5" />
+                  <!-- Glycerin to Mixing 1 -->
+                  <path d="M 160,171 L 295,171 L 295,145" fill="none" stroke="rgba(16, 185, 129, 0.2)" stroke-width="2.5" />
+                  <!-- Citric Acid to Mixing 1 -->
+                  <path d="M 160,235 L 335,235 L 335,145" fill="none" stroke="rgba(245, 158, 11, 0.2)" stroke-width="2.5" />
+
+                  <!-- Mixing 1 to Raw Solution -->
+                  <path d="M 370,110 L 460,110" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="3" />
+
+                  <!-- SLS to Raw Solution -->
+                  <path d="M 160,313 L 495,313 L 495,145" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="2.5" />
+                  <!-- Salicylic Acid to Raw Solution -->
+                  <path d="M 160,391 L 540,391 L 540,145" fill="none" stroke="rgba(236, 72, 153, 0.25)" stroke-width="2.5" />
+
+                  <!-- Raw Solution to Mixing 2 -->
+                  <path d="M 575,110 L 690,110" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="3" />
+
+                  <!-- Mixing 2 to Heated -->
+                  <path d="M 750,140 L 750,185" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="3" />
+                  <!-- Heated to Filterating -->
+                  <path d="M 750,245 L 750,290" fill="none" stroke="rgba(245, 158, 11, 0.3)" stroke-width="3" />
+
+                  <!-- Aloe Vera Gel to Filterating -->
+                  <path d="M 160,483 L 640,483 L 640,320 L 690,320" fill="none" stroke="rgba(34, 197, 94, 0.25)" stroke-width="2.5" />
+
+                  <!-- Filterating to Body Wash -->
+                  <path d="M 750,350 L 750,400" fill="none" stroke="rgba(52, 211, 153, 0.35)" stroke-width="3" />
+                </g>
+
+                <!-- ANIMATED GLOWING FLUID PULSES -->
+                <g class="stream-pulse-lines">
+                  <path class="pulse-path" d="M 160,43 L 315,43 L 315,75" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow-cyan)" />
+                  <path class="pulse-path" d="M 160,107 L 260,107" fill="none" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrow-violet)" />
+                  <path class="pulse-path" d="M 160,171 L 295,171 L 295,145" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-green)" />
+                  <path class="pulse-path" d="M 160,235 L 335,235 L 335,145" fill="none" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrow-amber)" />
+
+                  <path class="pulse-path" d="M 370,110 L 460,110" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow-cyan)" />
+
+                  <path class="pulse-path" d="M 160,313 L 495,313 L 495,145" fill="none" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrow-cyan)" />
+                  <path class="pulse-path" d="M 160,391 L 540,391 L 540,145" fill="none" stroke="#ec4899" stroke-width="2.5" marker-end="url(#arrow-pink)" />
+
+                  <path class="pulse-path" d="M 575,110 L 690,110" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow-cyan)" />
+
+                  <path class="pulse-path" d="M 750,140 L 750,185" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow-cyan)" />
+                  <path class="pulse-path" d="M 750,245 L 750,290" fill="none" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrow-amber)" />
+
+                  <path class="pulse-path" d="M 160,483 L 640,483 L 640,320 L 690,320" fill="none" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrow-green)" />
+
+                  <path class="pulse-path" d="M 750,350 L 750,400" fill="none" stroke="#34d399" stroke-width="3" marker-end="url(#arrow-green)" />
+                </g>
+
+                <!-- INPUT NODES (LEFT COLUMN) -->
+                <!-- 1. Distilled Water -->
+                <g class="svg-node" transform="translate(20, 20)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#38bdf8" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Distilled Water</text>
+                  <text x="70" y="38" fill="#38bdf8" font-family="monospace" font-size="10" text-anchor="middle">H₂O · Solvent</text>
+                </g>
+
+                <!-- 2. Ethylene Glycol -->
+                <g class="svg-node" transform="translate(20, 84)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#8b5cf6" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Ethylene Glycol</text>
+                  <text x="70" y="38" fill="#8b5cf6" font-family="monospace" font-size="10" text-anchor="middle">C₂H₆O₂ · Carrier</text>
+                </g>
+
+                <!-- 3. Glycerin -->
+                <g class="svg-node" transform="translate(20, 148)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#10b981" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Glycerin</text>
+                  <text x="70" y="38" fill="#10b981" font-family="monospace" font-size="10" text-anchor="middle">C₃H₈O₃ · Humectant</text>
+                </g>
+
+                <!-- 4. Citric Acid -->
+                <g class="svg-node" transform="translate(20, 212)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#f59e0b" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Citric Acid</text>
+                  <text x="70" y="38" fill="#f59e0b" font-family="monospace" font-size="10" text-anchor="middle">C₆H₈O₇ · Buffer</text>
+                </g>
+
+                <!-- 5. SLS -->
+                <g class="svg-node" transform="translate(20, 290)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#06b6d4" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">SLS</text>
+                  <text x="70" y="38" fill="#06b6d4" font-family="monospace" font-size="10" text-anchor="middle">Surfactant</text>
+                </g>
+
+                <!-- 6. Salicylic Acid -->
+                <g class="svg-node" transform="translate(20, 368)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#ec4899" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Salicylic Acid</text>
+                  <text x="70" y="38" fill="#ec4899" font-family="monospace" font-size="10" text-anchor="middle">C₇H₆O₃ · BHA</text>
+                </g>
+
+                <!-- 7. Aloe vera gel -->
+                <g class="svg-node" transform="translate(20, 460)">
+                  <rect width="140" height="46" rx="10" fill="#090d1c" stroke="#22c55e" stroke-width="1.5" />
+                  <text x="70" y="24" fill="#e2e8f0" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle">Aloe vera gel</text>
+                  <text x="70" y="38" fill="#22c55e" font-family="monospace" font-size="10" text-anchor="middle">Botanical Active</text>
+                </g>
+
+                <!-- UNIT OPERATION: FIRST MIXING -->
+                <g class="svg-node proc-node" transform="translate(260, 75)">
+                  <rect width="110" height="70" rx="14" fill="#0c1228" stroke="#38bdf8" stroke-width="2" />
+                  <text x="55" y="35" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="15" font-weight="800" text-anchor="middle">Mixing</text>
+                  <text x="55" y="52" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Stage 1: Base</text>
+                </g>
+
+                <!-- INTERMEDIATE VESSEL: RAW SOLUTION -->
+                <g class="svg-node vessel-node" transform="translate(460, 75)">
+                  <rect width="115" height="70" rx="14" fill="#0c1228" stroke="#818cf8" stroke-width="2" />
+                  <text x="57.5" y="32" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" text-anchor="middle">Raw</text>
+                  <text x="57.5" y="48" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" text-anchor="middle">Solution</text>
+                  <text x="57.5" y="62" fill="#818cf8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">+ SLS &amp; Salicylic</text>
+                </g>
+
+                <!-- RIGHT VERTICAL PROCESS CHAIN -->
+                <!-- Mixing (Stage 2) -->
+                <g class="svg-node proc-node" transform="translate(690, 80)">
+                  <rect width="120" height="60" rx="14" fill="#0c1228" stroke="#38bdf8" stroke-width="2" />
+                  <text x="60" y="30" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" text-anchor="middle">Mixing</text>
+                  <text x="60" y="46" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">Homogenize</text>
+                </g>
+
+                <!-- heated -->
+                <g class="svg-node proc-node" transform="translate(690, 185)">
+                  <rect width="120" height="60" rx="14" fill="#0c1228" stroke="#f59e0b" stroke-width="2" />
+                  <text x="60" y="30" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" text-anchor="middle">heated</text>
+                  <text x="60" y="46" fill="#f59e0b" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">40°C Bath</text>
+                </g>
+
+                <!-- filterating -->
+                <g class="svg-node proc-node" transform="translate(690, 290)">
+                  <rect width="120" height="60" rx="14" fill="#0c1228" stroke="#06b6d4" stroke-width="2" />
+                  <text x="60" y="28" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" text-anchor="middle">filterating</text>
+                  <text x="60" y="44" fill="#22c55e" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">+ Aloe Vera Gel</text>
+                </g>
+
+                <!-- Body wash (Final Output) -->
+                <g class="svg-node output-node" transform="translate(690, 400)">
+                  <rect width="120" height="65" rx="16" fill="linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(56, 189, 248, 0.2) 100%)" stroke="#34d399" stroke-width="2.5" />
+                  <text x="60" y="28" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="15" font-weight="900" text-anchor="middle">Body</text>
+                  <text x="60" y="46" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="15" font-weight="900" text-anchor="middle">wash</text>
+                  <text x="60" y="58" fill="#34d399" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">✓ Finished Batch</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Explanatory Legend / Chemistry Walkthrough -->
+            <div class="bd-flow-walkthrough">
+              <div class="bfw-step">
+                <span class="bfw-num">1</span>
+                <div>
+                  <strong>Phase 1: Base Mixing</strong>
+                  <p>Distilled Water, Ethylene Glycol, Glycerin, and Citric Acid are combined into an initial aqueous solvent phase.</p>
+                </div>
+              </div>
+              <div class="bfw-step">
+                <span class="bfw-num">2</span>
+                <div>
+                  <strong>Phase 2: Raw Solution Formation</strong>
+                  <p>Primary surfactant (SLS) and lipid active (Salicylic Acid) feed directly into the base to form the intermediate <em>Raw Solution</em>.</p>
+                </div>
+              </div>
+              <div class="bfw-step">
+                <span class="bfw-num">3</span>
+                <div>
+                  <strong>Phase 3: Thermal Dissolution &amp; Blending</strong>
+                  <p>The Raw Solution undergoes second-stage mixing and controlled heating (40°C) to completely dissolve salicylic acid crystals.</p>
+                </div>
+              </div>
+              <div class="bfw-step">
+                <span class="bfw-num">4</span>
+                <div>
+                  <strong>Phase 4: Botanical Infusion &amp; Filtration</strong>
+                  <p>Pure Aloe Vera gel feeds into the filtration stage to preserve natural enzymes, discharging the finished crystal-clear <em>Body Wash</em>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ORIGINAL TEAM DIAGRAM VIEW (IMAGE LIGHTBOX VIEW) -->
+          <div id="bd-original-view" class="bd-view-panel" style="display:none;">
+            <div class="original-diagram-card" onclick="openLightbox('images/block_diagram.png', 'Chemical Proto Bodywash — Official Student Team Block Diagram Schematic')">
+              <img src="images/block_diagram.png" alt="Official Team Block Diagram for Chemical Proto Bodywash" class="original-diagram-img" />
+              <div class="original-diagram-overlay">
+                <span>🔍 Click to view Full-Resolution Diagram</span>
+              </div>
+            </div>
+            <div class="original-diagram-caption">
+              <strong>Official Chemical Proto Team Block Diagram</strong> · MIT Chemistry Laboratory Class of 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ===== PERFORMANCE VIDEO ===== -->
+  <section id="video" class="section video-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Performance Video</div>
+        <h2 class="section-title reveal-up">Laboratory Demonstration</h2>
+        <p class="section-sub reveal-up">Live video demonstration of our bodywash formulation and foam generation.</p>
+      </div>
+
+      <div class="video-wrap reveal-up">
+        <video id="local-video" src="images/lab-video.mp4" controls style="display:none;width:100%;border-radius:24px;max-height:540px;"></video>
+        <iframe id="yt-frame" style="display:none;width:100%;height:540px;border-radius:24px;border:none;" allowfullscreen></iframe>
+        
+        <div class="vid-placeholder" id="vid-placeholder">
+          <div class="vid-bg-art">
+            <div class="vid-ring r1"></div>
+            <div class="vid-ring r2"></div>
+            <div class="vid-ring r3"></div>
+          </div>
+          <button class="vid-play-btn" onclick="document.getElementById('vid-placeholder').style.display='none'">▶</button>
+          <h3>Laboratory Video Recording</h3>
+          <p>Drop your laboratory MP4 file into <code>images/lab-video.mp4</code> or enter a YouTube embed URL below:</p>
+          <div class="vid-input-row">
+            <input type="text" id="video-url-input" placeholder="https://www.youtube.com/embed/..." />
+            <button class="btn-primary btn-sm" onclick="loadVideo()">Load Video</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APPLICATIONS, ADVANTAGES & DISADVANTAGES ===== -->
+  <section id="applications" class="section applications-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Real-World Assessment</div>
+        <h2 class="section-title reveal-up">Applications, Advantages &amp; Limitations</h2>
+        <p class="section-sub reveal-up">A critical engineering evaluation of the formulation's clinical utility and industrial scaling viability.</p>
+      </div>
+
+      <div class="aad-grid">
+        <!-- Applications -->
+        <div class="aad-card aad-app reveal-up" style="--i:0">
+          <div class="aad-glow" style="--c:#3B82F6"></div>
+          <div class="aad-head">
+            <div class="aad-icon" style="--c:#3B82F6">🎯</div>
+            <h3>Target Applications</h3>
+          </div>
+          <ul>
+            <li><span class="li-dot" style="--c:#3B82F6"></span><strong>Daily Body Cleansing:</strong> Balanced daily wash removing pollution, sweat, and sebum.</li>
+            <li><span class="li-dot" style="--c:#3B82F6"></span><strong>Acne-Prone Skin Therapy:</strong> 1.5% salicylic acid exfoliates follicular keratosis (bacne &amp; chest acne).</li>
+            <li><span class="li-dot" style="--c:#3B82F6"></span><strong>Post-Workout Antiseptic:</strong> Washes away sweat-borne gym bacteria while glycerine maintains skin hydration.</li>
+            <li><span class="li-dot" style="--c:#3B82F6"></span><strong>Dermatological Scalp/Body Cleanser:</strong> Reduces dead skin flaking and clears sebum build-up.</li>
+            <li><span class="li-dot" style="--c:#3B82F6"></span><strong>Hospital Sanitizing Formulation Base:</strong> Non-drying antiseptic carrier for institutional personal care.</li>
+          </ul>
+        </div>
+
+        <!-- Advantages -->
+        <div class="aad-card aad-adv reveal-up" style="--i:1">
+          <div class="aad-glow" style="--c:#10B981"></div>
+          <div class="aad-head">
+            <div class="aad-icon" style="--c:#10B981">✅</div>
+            <h3>Formula Advantages</h3>
+          </div>
+          <ul>
+            <li><span class="li-dot" style="--c:#10B981"></span><strong>Physiological pH Equilibrium (5.0):</strong> Prevents the alkaline lipid breakdown caused by standard soap bars (pH 9-10).</li>
+            <li><span class="li-dot" style="--c:#10B981"></span><strong>Botanical Soothing Action:</strong> Pure aloe vera gel counteracts surfactant drying and calms inflammation.</li>
+            <li><span class="li-dot" style="--c:#10B981"></span><strong>Dual Active System:</strong> Keratolytic BHA action combined with triple-hydroxyl humectant moisture trapping.</li>
+            <li><span class="li-dot" style="--c:#10B981"></span><strong>Readily Sourced Raw Materials:</strong> Economical benchtop formula scalable to pilot batch production.</li>
+            <li><span class="li-dot" style="--c:#10B981"></span><strong>High Biodegradability:</strong> Surfactants and organic acids break down safely in wastewater streams.</li>
+          </ul>
+        </div>
+
+        <!-- Disadvantages / Limitations -->
+        <div class="aad-card aad-dis reveal-up" style="--i:2">
+          <div class="aad-glow" style="--c:#F59E0B"></div>
+          <div class="aad-head">
+            <div class="aad-icon" style="--c:#F59E0B">⚠️</div>
+            <h3>Limitations &amp; Mitigations</h3>
+          </div>
+          <ul>
+            <li><span class="li-dot" style="--c:#F59E0B"></span><strong>SLS Sensitivity in Atopic Skin:</strong> May trigger mild erythema in eczema-prone individuals; mitigated by soothing aloe vera.</li>
+            <li><span class="li-dot" style="--c:#F59E0B"></span><strong>Salicylic Acid Caution:</strong> High concentrations contraindicated during pregnancy; benchtop batch capped at mild cosmetic dosage.</li>
+            <li><span class="li-dot" style="--c:#F59E0B"></span><strong>Absence of Broad Preservative:</strong> Fresh botanical formulation requires refrigeration or paraben-free booster for 12+ month shelf life.</li>
+            <li><span class="li-dot" style="--c:#F59E0B"></span><strong>Precise pH Sensitivity:</strong> Viscosity and active solubility degrade if pH drifts beyond 4.5–5.5 range.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI-POWERED QUIZ ===== -->
+  <section id="quiz" class="section quiz-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Knowledge Evaluation</div>
+        <h2 class="section-title reveal-up">AI Chemical Knowledge Quiz</h2>
+        <p class="section-sub reveal-up">Challenge your understanding with dynamically generated multiple-choice chemistry questions.</p>
+      </div>
+
+      <div class="quiz-wrap reveal-up" id="quiz-container">
+        <div id="quiz-controls" class="quiz-controls">
+          <div class="quiz-selects">
+            <div class="quiz-sel-group">
+              <label>Module Topic</label>
+              <select id="quiz-topic">
+                <option value="general">Comprehensive (All Topics)</option>
+                <option value="chemicals">Chemical Properties &amp; Roles</option>
+                <option value="reactions">Reactions &amp; Surfactant Kinetics</option>
+                <option value="procedure">Lab Methodology &amp; Steps</option>
+                <option value="applications">Applications &amp; Safety</option>
+              </select>
+            </div>
+            <div class="quiz-sel-group">
+              <label>Difficulty Tier</label>
+              <select id="quiz-difficulty">
+                <option value="easy">Undergraduate (Easy)</option>
+                <option value="medium" selected>Laboratory Chemist (Medium)</option>
+                <option value="hard">Chemical Engineer (Hard)</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-primary quiz-gen-btn" onclick="generateQuiz()">
+            <span>🤖</span> Generate Quiz with AI
+          </button>
+        </div>
+
+        <div id="quiz-loading" class="quiz-loading" style="display:none">
+          <div class="loading-dots"><span></span><span></span><span></span></div>
+          <p>Analyzing chemistry formulations and synthesizing questions...</p>
+        </div>
+
+        <div id="quiz-board" class="quiz-board" style="display:none">
+          <div class="qprog">
+            <div class="qprog-text">Question <span id="q-current">1</span> of <span id="q-total">5</span></div>
+            <div class="qprog-bar"><div class="qprog-fill" id="qprog-fill"></div></div>
+          </div>
+          <div id="quiz-question-area"></div>
+          <div class="quiz-nav">
+            <button class="btn-ghost btn-sm" id="prev-btn" onclick="prevQuestion()" style="display:none">← Previous</button>
+            <button class="btn-primary btn-sm" id="next-btn" onclick="nextQuestion()">Next Question →</button>
+            <button class="btn-primary btn-sm" id="submit-btn" onclick="submitQuiz()" style="display:none">Submit Quiz ✓</button>
+          </div>
+        </div>
+
+        <div id="quiz-result" class="quiz-result" style="display:none">
+          <div class="result-ring">
+            <div><span id="result-score">0</span><small>/<span id="result-total">5</span></small></div>
+          </div>
+          <h3 id="result-msg">Quiz Completed!</h3>
+          <p id="result-sub">Review your answers and performance breakdown below.</p>
+          <div id="result-breakdown"></div>
+          <button class="btn-primary" onclick="resetQuiz()">Take Another Quiz 🔄</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE RESEARCH TEAM ===== -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Student Researchers</div>
+        <h2 class="section-title reveal-up">Meet The Chemists</h2>
+        <p class="section-sub reveal-up">The dedicated undergraduate engineering team behind the AloePure formulation project.</p>
+      </div>
+
+      <!-- Individual Chemist Cards -->
+      <div class="team-cards reveal-up">
+        <div class="team-card">
+          <div class="tc-avatar" style="--c:#3B82F6">K</div>
+          <h4>Kashish</h4>
+          <p class="tc-role">Lead Formulator</p>
+          <span class="tc-desc">Reagent titration, surfactant micelle calculations &amp; laboratory safety.</span>
+        </div>
+        <div class="team-card">
+          <div class="tc-avatar" style="--c:#EC4899">H</div>
+          <h4>Harshali</h4>
+          <p class="tc-role">Lab Coordinator</p>
+          <span class="tc-desc">Experimental procedure sequencing, documentation &amp; quality control.</span>
+        </div>
+        <div class="team-card">
+          <div class="tc-avatar" style="--c:#8B5CF6">Sh</div>
+          <h4>Shlok</h4>
+          <p class="tc-role">Chemical Analyst</p>
+          <span class="tc-desc">Kinetic analysis, BHA active dissolution &amp; pH equilibrium optimization.</span>
+        </div>
+        <div class="team-card">
+          <div class="tc-avatar" style="--c:#F59E0B">Sa</div>
+          <h4>Sarthak</h4>
+          <p class="tc-role">Process Documentation</p>
+          <span class="tc-desc">Process flow diagram, block schematics &amp; quantitative mass balances.</span>
+        </div>
+        <div class="team-card">
+          <div class="tc-avatar" style="--c:#10B981">Sk</div>
+          <h4>Sakshi</h4>
+          <p class="tc-role">Quality Control</p>
+          <span class="tc-desc">Microbial barrier assessment, foam stability testing &amp; packaging verification.</span>
+        </div>
+      </div>
+
+      <!-- Real Team Photo Showcase -->
+      <div class="team-photo-showcase reveal-up">
+        <div class="team-photo-frame" onclick="openLightbox('images/team.jpg', 'Chemical Proto Project Team: Kashish, Harshali, Shlok, Sarthak & Sakshi in the MIT Chemistry Laboratory')">
+          <img src="images/team.jpg" alt="Chemical Proto Project Team in the Chemistry Laboratory: Kashish, Harshali, Shlok, Sarthak & Sakshi" />
+          <div class="team-photo-glass-banner">
+            <div class="tpg-info">
+              <h4>Chemical Proto Laboratory Team · Class of 2026</h4>
+              <p>Department of Chemical Engineering · MIT Institute</p>
+            </div>
+            <div class="tpg-badge">🔍 Click for Full-Size HD View</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">⚗️ AloePure Bodywash</div>
+        <p class="footer-team">Chemical Proto Engineering Project by <strong>Kashish, Harshali, Shlok, Sarthak &amp; Sakshi</strong></p>
+        <p class="footer-sub">Department of Chemical Engineering · MIT Institute · 2026</p>
+        <div class="footer-line"></div>
+        <p class="footer-tiny">Synthesized with scientific precision, pure botanical actives, and rigorous pH control.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button with Circular Progress -->
+  <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
+    <svg class="progress-ring" width="46" height="46">
+      <circle class="progress-ring-circle" stroke="var(--c1)" stroke-width="3" fill="transparent" r="20" cx="23" cy="23"/>
+    </svg>
+    <span class="btt-arrow">↑</span>
+  </button>
+
+  <script>const GROQ_API_KEY = "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";</script>
+  <script src="script.js"></script>
+</body>
+</html>
